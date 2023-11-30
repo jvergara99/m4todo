@@ -1,0 +1,21 @@
+Video S3 del módulo 4
+Elaborar un API web o mejor dicho un backend.. vamos a exponer una serie de endpoint, rutas o urls que ayudaran que otro software
+interactue con el nuestro y proporcionarle la información que necesite.
+Como cualquier aplicación el punto de entra será por el controlador (esta será una arquitectura basada en N capas, nombre genérico) donde una de las
+capas es el controlador (es como el cerebro), esta es la capa que recibe las peticiones HTTP, es decir, sabe como obtener la información
+hablando del protocolo HTTP (obtener y responder peticiones), tendrá un single responsability; esta capa controlador no se preocupa si hay conexión a BD, de consultas a BD, etc. Solo  se relaciona y resulve todo lo que tiene que ver con HTTP
+
+1. Creamo dentro de main-java la carpeta: controller y agregamos la clase: TodoController.java
+2. Hay que avisarle a sprint que este es un controlador: @RestController
+3. Vamos a definir las operaciones o métodos: obtener tares, crear nueva tarea, marcar como completada una tarea, obtener una sola tarea, ...cada una
+de estas operaciones será un endpoint o ruta
+4. Debemos ahora modelar las tareas, creamos n main-java la carpeta: model y dentro de model la clase: Todo.java
+
+5. En TodoController, creamos el método getAll() con el endpoint @RequestMapping("/obtenerTodos") el URL para acceder sería:
+http://localhost:8080/obtenerTodos aquí Spring convierte a un JSON la salida al navegador
+
+6. En TodoController, creamos el método create(), este no lo debemos pensar como POO donde recibimos por parte cada uno de los atributos ( para
+el id estos lo creamos nosotros y para completed como es tarea nueva pues lo consideramos false). ES MAS FACIL RECIBIR TODO JUNTO QUE EN parte
+
+
+continua en min. 1:16:48
