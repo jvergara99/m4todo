@@ -4,13 +4,20 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.bedu.m4todo.model.Todo;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import jakarta.validation.Valid;
+
+//import jakarta.validation.Valid;
 
 @RestController
 public class TodoController {
     
     private List<Todo> todos;
+    private long currentId = 1;
 
     public TodoController() {
         todos = new LinkedList<>();
@@ -35,14 +42,22 @@ public class TodoController {
      *  2. Utilizando un PATH VARIABLE, es decir que un pedazo de la URL se convierta en una variable y se UTILIZA MAS para dejar 
      * identificadores o valores cortos. eJ. https://amazon.com.mx/carrito/1234-5678
      * 
-     * 3. Utilizando el REQUEST BODY
+     * 3. Utilizando el REQUEST BODY <-- para este ejemplo, la información del título y descripción del Todo, entrará por este punto ...
      * 
-     * 4. Utilizando los ENCABEZADOS header
+     * 4. Utilizando los ENCABEZADOS header, es básicamente información adicional que se le dá a la perición, 
      * 
      */
     @RequestMapping("/crearTodo")
-    public ? create() {
+    public Todo create(@Valid @RequestBody Todo data) { // Por aquí se recibi la información del Todo, title, description, ... que se tiene en el modelo
+        // Por lo gheneral un API regresa el elemento ecien creado, pero en ocasiones es elemento puede contener indormación adicional que no se 
+        // envió, ej. el id
+        // Para este caso el id lo generaos nosotros, declaramos variable currentId y de forma manual la incrementamos cada que se crea una tarea
+        data.setCompleted(false);
+        data.setId(++currentId);
 
+        todos.add(data);
+
+        return data;
     }
 
     //Marcar como completada una tarea

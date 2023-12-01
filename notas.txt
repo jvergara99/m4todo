@@ -18,4 +18,14 @@ http://localhost:8080/obtenerTodos aquí Spring convierte a un JSON la salida al
 el id estos lo creamos nosotros y para completed como es tarea nueva pues lo consideramos false). ES MAS FACIL RECIBIR TODO JUNTO QUE EN parte
 
 
-continua en min. 1:16:48
+7. Instalar Postman y en enviar peticiones para obtener Todos: localhost:8080/obtenerTodos
+8. Enviar peticiones desde Postman (body - raw - json  e ingresar json con title y descriptio) para crear Todos: localhost:8080/crearTodo
+
+//Ahora validaremos campos, title y description, para evitar valores null
+9. Detenemos ejecución y modificamos: build.gradle, agregamos dependecies: implementation 'org.springframework.boot:spring-boot-starter-validation' Con esta agregamos la biblioteca de Beans de Spring
+10. Como validar los datos, todo lo que tenga RequestBody lo podemos validar agregando anotación @Valid: public Todo create(@Valid @RequestBody Todo data) 
+11. Después de lo anterior, en el modelo, validamos los atributos requeridos con la anotación @NotNull:  @NonNull - private String title; También, 
+podemos indicar que el tamaño del title no exceda los 100 caracteres: @Size(max=100).
+En resumen, @NotNull y @Size son las anotaciones para hacer las validaciones en Spring
+
+12. Correr código y verificar validación ... desde Postman

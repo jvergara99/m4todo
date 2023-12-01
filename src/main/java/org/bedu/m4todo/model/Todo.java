@@ -1,16 +1,27 @@
 package org.bedu.m4todo.model;
 
+//import org.springframework.lang.NonNull;
+
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 public class Todo {
     
     private long id;
+
+    @NotNull
+    @Size(max = 100)
     private String title;
-    private String descriptio;
+
+    @NotNull
+    @Size(max = 2500)
+    private String description;
     private boolean completed;
     
-    public Todo(long id, String title, String descriptio, boolean completed) {
+    public Todo(long id, String title, String description, boolean completed) {
         this.id = id;
         this.title = title;
-        this.descriptio = descriptio;
+        this.description = description;
         this.completed = completed;
     }
 
@@ -30,12 +41,12 @@ public class Todo {
         this.title = title;
     }
 
-    public String getDescriptio() {
-        return descriptio;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescriptio(String descriptio) {
-        this.descriptio = descriptio;
+    public void setDescriptio(String description) {
+        this.description = description;
     }
 
     public boolean isCompleted() {
