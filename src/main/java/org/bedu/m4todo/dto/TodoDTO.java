@@ -1,28 +1,11 @@
-package org.bedu.m4todo.model;
+package org.bedu.m4todo.dto;
 
-
-// BORRAR import jakarta.validation.constraints.NotNull;
-// BORRAR import jakarta.validation.constraints.Size;
-
-public class Todo {
+public class TodoDTO {
     
     private long id;
-
-    // BORRAR @NotNull
-    // BORRAR @Size(max = 100)
     private String title;
-
-    // BORRAR @NotNull
-    // BORRAR @Size(max = 2500)
     private String description;
     private boolean completed;
-    
-    public Todo(long id, String title, String description, boolean completed) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
-        this.completed = completed;
-    }
 
     public long getId() {
         return id;
@@ -44,7 +27,7 @@ public class Todo {
         return description;
     }
 
-    public void setDescriptio(String description) {
+    public void setDescription(String description) {
         this.description = description;
     }
 
@@ -55,8 +38,5 @@ public class Todo {
     public void setCompleted(boolean completed) {
         this.completed = completed;
     }
-
-    
-
 
 }

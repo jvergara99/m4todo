@@ -28,4 +28,11 @@ el id estos lo creamos nosotros y para completed como es tarea nueva pues lo con
 podemos indicar que el tamaño del title no exceda los 100 caracteres: @Size(max=100).
 En resumen, @NotNull y @Size son las anotaciones para hacer las validaciones en Spring
 
-12. Correr código y verificar validación ... desde Postman
+12. Correr código y verificar validación ... desde Postman OK
+
+13. Hasta aquí... observemos el códig y ¿Qué errores o aspectos podemos mejorar? observemos el modelo y nos dice que queremos almacenar tareas (id, title, ...), lo primero es que veo un id y completed que no utilizo (yo los genero pero no los recibo) y solo ciertos un datos que validamos; en términos semánticos tenemos un conflicto, unos se validd y otros no ...ej. cómo decirle que en actualización el title puede ser nulo pero la descripción no, o que ambos son nulos, etc... aquí entran los DTO 
+Los DTO Data Transfer Object hace referencia a cómo se ve la información (no en el almacenamiento) al momento de la transmisión de los datos. En lo smétodos implementados obtenerTodos y crearTodo... estoy transmitiendo datos/información. Tiene que haber un diferencia en cómo los transmito y cómo los almaceno, en ocasiones las dos son iguales pero en otras no, 
+
+13. Para esto vamos a crear los DTOs para los datos de entrada y los datos de salida: crear carpeta dto: main-java-dto y dentro las clases DTOs:
+CreateTodoDTO.java y TodoDTO.java. Para el CreateTodoDTo solo requerimos que nos den un title y una description
+En resumen, diseñamos cómo se ven los datos de entrada (diferente a como están en la memoria), una cosa es como crear los Todo y la otra cómo los almaceno. NOTA los DTO pueden no llevar constructor, en esta caso se deja sin crear. En definitiva se tranformo una lista de model a DTO 
